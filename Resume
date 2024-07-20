@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="texxtt.css"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    .header,body{background:var(--bg--color)}.logo,.navbar a{font-size:2.5rem;color:var(--text--color)}.navbar a:hover,.project a:hover{color:var(--main--color)}.division,.header,.home{display:flex}#menu-icons,.logo,.navbar a,body,section{color:var(--text--color)}#head:hover,.btn:hover,.hr:hover{box-shadow:none}.header,.overlay-container{position:fixed;top:0;left:0;width:100%}*,.form-input{box-sizing:border-box}*{margin:0;padding:0;text-decoration:none;border:none;outline:0;scroll-behavior:smooth;font-family:sans-serif}:root{--bg--color:#1f242d;--second-bg--color:#323946;--text--color:#fff;--main--color:#0ef}html{font-size:62.5%;overflow-x:hidden}section{min-height:100vh;padding:10rem 9% 2rem}.header{padding:2rem 9%;justify-content:space-between;align-items:center;z-index:100}.logo{font-weight:600;cursor:default;color:var(--main--color)}.navbar a{margin-left:4rem;translate:3s}.home{justify-content:left;align-items:left}.home-content{font-size:3.2rem;font-weight:700}.project{line-height:60px}.project a:hover{border-radius:10rem;box-shadow:0 0 1rem var(--text--color);background:var(--second-bg--color)}.btn,.social-media a:hover{background-color:var(--main--color);box-shadow:0 0 1rem var(--main--color);color:var(--second-bg--color)}.project a{font-size:2.2rem;color:0 0 1rem var(--text--color);padding:1.2rem 3rem;border-radius:10rem}.social-media a{display:grid;justify-content:left;align-items:left;width:7rem;height:7rem;padding:1rem;background:0 0;border:.3rem solid var(--main--color);border-radius:50%;font-size:4.2rem;color:var(--main--color);margin:2.8rem 2.2rem 1rem 0}#head,.btn{display:inline-block;padding:1rem 2.8rem;font-weight:600;transition:.5s}.btn{border-radius:4rem;font-size:1.6rem;margin-top:4rem}.hr{border:.2rem solid var(--main--color);box-shadow:0 0 4rem var(--main--color);border-radius:1rem;margin-bottom:30px}.sub-head{font-size:2rem;padding:2rem;line-height:3rem}#right{width:65%;padding:3rem;margin-top:5rem;font-size:2rem}#menu-icons{font-size:3.6rem;display:none}#head,.btn-open-popup{background-color:var(--main--color);color:var(--second-bg--color);box-shadow:0 0 1rem var(--main--color)}#head{border-radius:4rem;font-size:2rem;border-top:var(--text--color)}#head:hover{background:var(--text--color)}.contact{justify-content:center;text-align:center}.btn-open-popup{padding:12px 24px;font-size:18px;border:none;border-radius:2rem;cursor:pointer;transition:background-color .3s}.btn-open-popup:hover{background-color:var(--text--color);box-shadow:none}.overlay-container{display:none;height:100%;background:rgba(0,0,0,.6);justify-content:center;align-items:center;opacity:0;transition:opacity .3s}.popup-box{background:var(--bg--color);padding:24px;border-radius:12px;box-shadow:1rem 1rem 1rem var(--second-bg--color);width:320px;text-align:center;opacity:0;transform:scale(.8);animation:.5s ease-out forwards fadeInUp}.form-container{display:flex;flex-direction:column}.form-label{margin-bottom:10px;font-size:16px;color:#444;text-align:left}.form-input{padding:10px;margin-bottom:20px;border:1px solid var(--main--color);border-radius:8px;font-size:16px;width:100%}.btn-close-popup,.btn-submit{padding:12px 24px;border:none;border-radius:8px;cursor:pointer;transition:background-color .3s,color .3s}.btn-submit{background-color:var(--second-bg--color);color:var(--text--color)}.btn-close-popup{margin-top:12px;background-color:#e74c3c;color:#fff}.btn-submit:hover{background:gray}.btn-close-popup:hover{background-color:var(--second-bg--color)}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.overlay-container.show{display:flex;opacity:1}
+</style>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Interactive Resume</a>
+
+        <i class='bx bx-menu' id="menu-icons"></i>
+
+        <nav class="navbar">
+            <a href="#personal">Personal Information</a>
+            <a href="#resume">Resume Sections</a>
+            <a href="#reach">Reach Me</a>
+        </nav>
+    </header>
+
+    <section class="home" id="personal">
+        <div class="division">
+            <div id="left">
+                <div class="home-content">
+                    <h3>Jyotiprakash Mahanta</h3>
+                    <div class="social-media">
+                        <a href="tel:8260271527"><i class='bx bx-phone'></i></a>
+                        <a href="mailto:07jyotiprakash@gmail.com"><i class='bx bxl-gmail'></i></a>
+                        <a href="https://www.linkedin.com/in/jyotiprakash-mahanta-b21888275/"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://github.com/JyotiprakashMahanta"><i class='bx bxl-github'></i></a>
+                        <a href="https://www.facebook.com/facebookIndia/?brand_redir=20531316728"><i class='bx bxl-facebook'></i></a>
+                    </div>
+                    <a href="public/Jyotiprakash-Mahanta-FlowCV-Resume-20240226.pdf" class="btn">Download CV</a>
+                </div>
+            </div>
+            <div id="right">
+                <fieldset>
+                    <p>
+                &nbsp;&nbsp;&nbsp;Recently, I graduated with a Bachelor of Computer Application (BCA) from the Academy of Management and Information Technology (AMIT). My education has provided me with a strong foundation in various aspects of computer science, including programming languages, software development methodologies, and database management systems (DBMS).
+                         <br><br> <br>
+                 I am passionate about solving real-world problems and enhancing user experiences. During my time at university, I actively participated in the Student Enrollment Management System project, where I demonstrated my skills in teamwork, communication, and problem-solving.
+                <br> <br> <br>
+                 To stay current, I am committed to continuous learning and keeping up with the latest technologies. I regularly practice problem-solving through coding exercises on platforms like LeetCode and HackerRank. Additionally, I have gained practical experience through internships in web development.
+                    </p>
+                </blo>
+            </div>
+        </div>
+        <hr class="hr">
+    </section>
+    <hr class="hr">    
+    <section class="resume" id="resume">
+        <div>
+            <span id="head"><i class='bx bxs-graduation'></i>&nbsp;&nbsp;Education</span>
+            <p class="sub-head">
+            * 2017-2018 Panchayat High School with 62%. (10th)<br>
+            * 2018-2020 Saikrupa Residential College with 56.5%. (12th) <br>
+            * 2020-2023 Bachelor of Computer Application with 70.2% || 7.70 CGPA.
+            </p>
+        </div>
+        <div class="work-experience">
+            <span id="head"><i class='bx bxs-briefcase'></i>&nbsp;&nbsp;Work Experience</span>
+             <p class="sub-head">* Fresher</p>
+        </div>
+        <div class="skills">
+            <span id="head"><i class='bx bxs-cog'></i>&nbsp;&nbsp;Skills</span>
+            <p class="sub-head">
+                I am passionate about solving real-world problems and enhancing user experiences. During my time at university, I actively participated in the Student Enrollment Management System project, where I demonstrated my skills in teamwork, communication, and problem-solving.
+            </p>
+        </div>
+        <div class="cartificate">
+            <span id="head"><i class='bx bxs-certification' ></i>&nbsp;&nbsp;Cartification</span>
+            <p class="sub-head">
+                A. Full Stack Web Devloper By Sudhakar Sharma (NareshIT, Hyderabad, 2024)<br>
+                B. Core Java By Hare Krishna (NareshIT, Hyderabad, 2024)<br>
+                C. Oracle By Sudhakar L (NareshIT, Hyderabad, 2024)<br>
+            </p>
+        </div>
+        <div class="projrct">
+            <span id="head"><i class='bx bx-code-block'></i>&nbsp;&nbsp;Project</span>
+            <p class="sub-head">
+                <div class="project">
+                    <a href="">1. Basic Calculator</a> <br>
+                    <a href="">2. Basic Calculator</a> <br>
+                    <a href="">3. Basic Calculator</a>                     
+                </div>
+            </p>
+        </div>
+    </section>
+    <section class="contact" id="reach">
+        <hr class="hr">
+        <button class="btn-open-popup" onclick="togglePopup()"> 
+            Looking Forward to Our Chat 
+            </button> 
+        
+          <div id="popupOverlay" 
+               class="overlay-container"> 
+              <div class="popup-box"> 
+                  <form class="form-container"> 
+                      <label class="form-label" 
+                             for="name"> 
+                        Username: 
+                        </label> 
+                      <input class="form-input" type="text" 
+                             placeholder="Enter Your Username" 
+                             id="name" name="name" required> 
+        
+                      <label class="form-label" for="email">Email:</label> 
+                      <input class="form-input"
+                             type="email" 
+                             placeholder="Enter Your Email"
+                             id="email" 
+                             name="email" required> 
+        
+                      <button class="btn-submit" 
+                              type="submit"> 
+                        Submit 
+                        </button> 
+                  </form> 
+        
+                  <button class="btn-close-popup" 
+                          onclick="togglePopup()"> 
+                    Close 
+                    </button> 
+              </div> 
+          </div> 
+        
+          <script> 
+              function togglePopup() { 
+                  const overlay = document.getElementById('popupOverlay'); 
+                  overlay.classList.toggle('show'); 
+              } 
+          </script>
+    </section>
+</body>
+
+</html>
