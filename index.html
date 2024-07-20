@@ -3,98 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inox Movies</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    function  BookClick(){
-        document.getElementById("lblMovies").innerHTML= document.getElementById("lstMovies").value;
-        document.getElementById("lblCinema").innerHTML=document.getElementById("lstCinema").value;
-        document.getElementById("lblDate").innerHTML=document.getElementById("lstDate").value;
-        document.getElementById("lblTime").innerHTML=document.getElementById("lstTime").value;
-        document.getElementById("lblSit").innerHTML=document.getElementById("lstSit").value;
-
-        poster = document.getElementById("poster");
-        screen = "";
-        movieName = document.getElementById("lstMovies").value;
-
-        if(movieName=="Godavari"){
-            poster.src="public/Godavari.jpg";
-            screen="Scrren-1";
-        }else{
-            poster.src="public/lovemouli.jpg";
-            screen="Scrren-2";
+    <title>Clinic Management</title>
+    <style>
+        body{
+            background-image: linear-gradient(rgb(255, 0, 238), rgb(138, 78, 243));
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-        document.getElementById("lblScreen").innerHTML=screen;  
-    }
-</script>
+        main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            height: 500px;
+            background-color: aqua;
+            width: 400px;
+            margin: auto;
+            .btnDiv,h2{
+                text-align: center;
+            }
+            button{
+                width: 50%;
+                margin: auto;
+                color: white;
+                border: none;
+                height: 30px;
+                border-radius: 4px;
+            }
+            button:active{
+                box-shadow: black 0px 0px 5px;
+            }
+            #logSubmit{
+                background-color: rgb(2, 92, 2);
+            }
+            #signSubmit{
+                background-color: rgb(10, 124, 239);
+            }
+            select{
+                width: 70%;
+                height: 25px;
+                border-radius: 4px;
+            }
+
+            input{
+                outline:none;
+                border:1px solid rgb(103, 103, 250);
+                height: 25px;
+                border-radius: 4px;
+            }
+            input:hover{
+                box-shadow: 0px 0px 12px rgb(103, 103, 250);
+                transition: 0.3s;
+            }
+        }
+        .doctor,.recep,main{
+            select{
+                width: 70%;
+                height: 25px;
+                border-radius: 4px;
+            }
+            button:active{
+                box-shadow: black 0px 0px 5px;
+            }
+            input{
+                outline:none;
+                border:1px solid rgb(103, 103, 250);
+                height: 25px;
+                border-radius: 4px;
+            }
+            input[type=text]:hover,select:hover{
+                box-shadow: 0px 0px 12px rgb(103, 103, 250);
+                transition: 0.3s;
+            }
+            .logout,#viewTokens,#view{
+                margin: auto;
+                color: white;
+                border: none;
+                height: 30px;
+                border-radius: 4px;
+            }
+            #viewTokens,#view{
+                background-color: rgb(17, 125, 240);
+            }
+            .logout{
+                background-color: orange;
+            }
+            #hide,#hide2{
+                background-color: black;
+                border: none;
+            }
+            
+        }
+        .startPage{
+            button{
+                margin: 10px;
+            }
+        }
+        .recep{
+            display: none;
+            width: 700px;
+            background-color: aqua;
+            text-align: center;
+            margin: auto;
+            h1{
+            width: fit-content;
+            border-bottom: 1px solid black;
+            margin: auto;
+            }
+            .submit{
+                border: none;
+                border-radius: 4px;
+                height: 30px;
+                background-color: orange;
+            }
+            label{
+                display: block;
+            }
+            select{
+                width: 30%;
+            }
+            #age{
+               width:15% ; 
+            }
+        }
+        .doctor{
+            background-color: aqua;
+            display: none;
+            width: 700px;
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+            h1{
+                border-bottom: 1px solid black;
+            }
+        }
+        #loginForm,#signupForm,#dataForm{
+            position: relative;
+        }
+        #signupForm{
+            display: none;
+        }
+        #goToSignup,#goToLogin{
+            background-color: whitesmoke;
+            border: none;
+            color: blue;
+            height: 35px;
+        }
+        #goToSignup:active,#goToLogin:active{
+            color: red;
+        }
+        button{
+            cursor: pointer;
+        }
+        .success,.error,.success0,.error0,#err2{
+            display: none;
+            position: absolute;
+            top:50%;
+            left: 5%;
+            width: 90%;
+            text-align: center;
+            padding: 2px;
+            color: white;
+        }
+        .success,.success0{
+            background-color: green;
+        }
+        .error,.error0,#err2{
+            background-color: rgb(197, 2, 2);
+        }
+        #showAll,#showTokens{
+            display: none;
+            button{
+                width: 95%;
+                color: orange;
+            }
+        }
+        .userRecep,.userDoctor{
+            text-align: start;
+            padding-left: 3px;
+        }
+        #list,#tokens{
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            scrollbar-width:thin;
+            max-height: 500px;
+            width: 93%;
+        }
+
+        .li2,.li1{
+            .listDivs{
+                display: grid;
+                grid-template-columns: 6fr 6fr;
+                border-bottom: 1px solid gray;
+            }
+            .check2{
+                width: 70%;
+            }
+            .check{
+                font-size: xx-large;
+            }
+        }
+        input[type='checkbox']{
+            width: 200px;
+        }
+        @media only screen and (max-width:600px){
+            main,.recep,.doctor{
+                width: 310px;
+            }
+            .li2,.li1{
+            .listDivs{
+                grid-template-columns: 6fr 6fr;
+            }}
+        }
+    </style>
 </head>
-<body class="container-fluid">
-    <h3>Quick Booking</h3>
-    <nav class="d-flex justify-content-between p-2 bg-dark text-white">
-        <div>
-            <select class="form-select" id="lstMovies">
-                <option>Select Movies</option>
-                <option>Godavari</option>
-                <option>Love Mouli</option>
-            </select>
-        </div>
-        <div>
-            <select class="form-select" id="lstCinema">
-                <option>Select Cinema</option>
-                <option>Inox-GVK</option>
-                <option>Inox-KPHB</option>
-            </select>
-        </div>
-        <div>
-            <select class="form-select" id="lstDate">
-                <option>Select Date</option>
-                <option>TODAY</option>
-                <option>TOMMOROW</option>
-            </select>
-        </div>
-        <div>
-            <select class="form-select" id="lstTime">
-                <option>Select Time</option>
-                <option>10 AM</option>
-                <option>2PM</option> 
-            </select>
-        </div>
-        <div>
-            <select class="form-select" id="lstSit">
-                <option>Select Sit</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
-        </div>
-        <div>
-            <button class="btn btn-danger" onclick="BookClick()">Book</button>
-        </div>
-    </nav>
-    <section>
-        <div class="w-25">
-            <h2>Booking Summary</h2>
-            <div class="card p-2">
-                <img class="card-img-top" id="poster" height="200">
-                <div class="card-header">
-                    <dl>
-                        <dt>Movies</dt>
-                        <dd id="lblMovies"></dd>
-                        <dt>Cinema</dt>
-                        <dd id="lblCinema"></dd>
-                        <dt>Date</dt>
-                        <dd id="lblDate"></dd>
-                        <dt>Show Time</dt>
-                        <dd id="lblTime"></dd>
-                        <dt>Seates</dt>
-                        <dd id="lblSit"></dd>
-                        <dt>Screen</dt>
-                        <dd id="lblScreen"></dd>
-                    </dl>
+<body>
+    <main id="main">
+        <div class="startPage">
+            <form id="loginForm">
+                <h2>User Login</h2>
+                <dl>
+                    <dt>Email:</dt>
+                    <dd><input required type="email" id="logEmail"></dd>
+                    <dt>Password:</dt>
+                    <dd><input required id="logPassword" type="password"></dd>
+                </dl>
+                <div class="btnDiv">
+                    <button type="submit" id="logSubmit">Login</button><br>
+                    <button id="goToSignup">Not an user? Signup</button>
                 </div>
-            </div>
+                <div id="err2">!invalid credential</div>
+            </form>
+            <form id="signupForm">
+                <h2>User Resistration</h2>
+                <dl>
+                    <dt>Name:</dt>
+                    <dd><input required id="signName" type="text"></dd>
+                    <dt>DOB:</dt>
+                    <dd><input required id="signDOB" type="date"></dd>
+                    <dt>Email:</dt>
+                    <dd><input required id="signEmail" type="email"></dd>
+                    <dt>Mobile No.</dt>
+                    <dd><input required id="signMobile" maxlength="10" pattern="\d{10}" type="text"></dd>
+                    <dt>Create Password:</dt>
+                    <dd><input required type="password" minlength="4" id="signPassword"></dd>
+                    <dt>Designation:</dt>
+                    <dd><select name="designation" id="designation">
+                        <option value="none">Select</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="receptionist">Receptionist</option>
+                    </select></dd>
+                </dl>
+                <div class="btnDiv">
+                    <button type="submit" id="signSubmit">Signup</button><br>
+                    <button id="goToLogin">Existing user? Login</button>
+                </div>
+                <div class="error0">Select Designation</div>
+                <div class="success0">User resistered successfully</div>
+            </form>
+        </div>
+    </main>
+    <section class="recep">
+        <h1>Receptionist</h1><br>
+        <div class="userRecep">
+            Welcome <span id="recepName"></span>&nbsp;
+            <button class="logout" id="logout">logout</button>
+        </div>
+        <form id="dataForm">
+            <h3>Fill patient data to generate token</h3>
+            <label for="name">Name</label>
+            <input required type="text" name="name" id="name"><br><br>
+            <label for="age">Age</label>
+            <input required type="number" name="age" id="age"><br><br>
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+                <option value="none">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select><br><br>
+            <button type="submit" class="submit">Submit</button><br>
+            <div class="success">Token generated</div>
+            <div class="error">Select gender</div>
+        </form><br>
+        <button id="view">View all appointments</button><br><br>
+        <div id="showAll">
+            <h1 id="listHead">All appointments details</h1><br>
+            <button id="hide">Hide</button>
+            <ol id="list" reversed></ol>
         </div>
     </section>
+
+    <section class="doctor">
+        <h1>Doctor</h1><br>
+        <div class="userDoctor">Welcome Dr.
+            <span id="doctorName"></span>&nbsp;
+            <button class="logout" id="logout2">Logout</button>
+        </div><br>
+        <button id="viewTokens">view all generated token list</button>
+        <div id="showTokens">
+            <h1 id="tokensHead">All generated tokens</h1>
+            <button id="hide2">Hide</button>
+            <ol id="tokens"></ol>
+        </div>
+    </section>
+
+    <script type="module" src="/script.js"></script>
+    <script>
+
+        document.querySelector('body').onload=()=>{
+            var nam=sessionStorage.getItem('name');
+            var post=sessionStorage.getItem('post');
+            var main=document.querySelector('main');
+            if(nam){
+                if(post==='receptionist'){
+                document.querySelector('.recep').style.display='block';
+                document.getElementById('recepName').innerHTML=nam;
+                main.style.display='none';
+                }else if(post==='doctor'){
+                    document.querySelector('.doctor').style.display='block';
+                document.getElementById('doctorName').innerHTML=nam;
+                main.style.display='none';
+                }
+            }
+        }
+
+        //hide all appointment list
+        document.getElementById('hide').addEventListener('click',()=>{
+            hide();
+        })
+        function hide(){
+            document.getElementById('showAll').style.display='none';
+            document.getElementById('list').innerHTML='';
+        }
+
+//go to signup page
+        document.getElementById('goToSignup').addEventListener('click',(e)=>{
+            e.preventDefault();
+            document.getElementById('signupForm').style.display='block';
+            document.getElementById('loginForm').style.display='none';
+        });
+
+        //go to login page
+        document.getElementById('goToLogin').addEventListener('click',(e)=>{
+            e.preventDefault();
+            document.getElementById('signupForm').style.display='none';
+            document.getElementById('loginForm').style.display='block';
+        });
+        //logout
+        document.getElementById('logout2').addEventListener('click',(e)=>{
+            logout();
+        });
+        document.getElementById('logout').addEventListener('click',(e)=>{
+            logout();
+        });
+        function logout(){
+            sessionStorage.removeItem('nam');
+            sessionStorage.removeItem('post');
+            document.querySelector('.recep').style.display='none';
+            document.querySelector('.doctor').style.display='none';
+            document.querySelector('main').style.display='flex';
+        }
+        document.getElementById('hide2').addEventListener('click',()=>{
+            document.getElementById('showTokens').style.display='none';
+        })
+    </script>
 </body>
 </html>
